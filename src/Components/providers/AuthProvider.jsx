@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
@@ -64,7 +65,7 @@ const AuthProvider = ({children}) => {
     };
   }, []);
 
-  const authInfo = {
+  const authInfo = {setUser,
     user,
     loading,
     setLoading,
