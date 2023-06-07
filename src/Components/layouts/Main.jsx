@@ -4,9 +4,9 @@ import Navbar from "../Navbar/Navbar";
 
 const Main = () => {
     return (
-      <div>
+      <div className="bg-slate-400">
         <Navbar></Navbar>
-        <div className="pt-28 pb-10 md:min-h-[calc(100vh-141px)]">
+        <div className="sm:pt-20 pt-28 pb-10 md:min-h-[calc(100vh-141px)]">
           <Outlet />
         </div>
         <Footer />

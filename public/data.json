@@ -1,0 +1,172 @@
+[
+  {
+    "instructorName": "Jane Doe",
+    "instructorImage": "https://i.pinimg.com/236x/94/73/89/947389c83dda40cba09b517ec6a90c38.jpg",
+    "availableSeats": 10,
+    "instructorEmail": "jane.doe@example.com",
+    "studentNumber": 20,
+    "rating": 4.8,
+    "courseName": "Advanced Makeup Techniques",
+    "description": "Learn advanced makeup techniques and create stunning looks for special occasions and events.",
+    "price": 199,
+    "status": "popular"
+  },
+  {
+    "instructorName": "John Smith",
+    "instructorImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 5,
+    "instructorEmail": "john.smith@example.com",
+    "studentNumber": 15,
+    "rating": 4.5,
+    "courseName": "Cosmetic Chemistry",
+    "description": "Discover the science behind cosmetics and learn how to formulate your own beauty products.",
+    "price": "$149",
+    "status": "normal"
+  },
+
+  {
+    "instructorName": "Emma Johnson",
+    "instructorImage": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVvcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 75,
+    "instructorEmail": "emma.johnson@example.com",
+    "studentNumber": 25,
+    "rating": 4.7,
+    "price": 199,
+    "courseName": "Professional Makeup Artistry",
+    "description": "Master the art of professional makeup and enhance your skills for various occasions and media."
+  },
+  {
+    "instructorName": "Emma Johnson",
+    "instructorImage": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVvcGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 15,
+    "instructorEmail": "emma.johnson@example.com",
+    "studentNumber": 85,
+    "rating": 4.7,
+    "price": 199,
+    "courseName": "Advanced Makeup Techniques",
+    "description": "Master the art of professional makeup and enhance your skills for various occasions and media."
+  },
+  {
+    "instructorName": "David Thompson",
+    "instructorImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 10,
+    "instructorEmail": "david.thompson@example.com",
+    "studentNumber": 18,
+    "rating": 4.5,
+    "price": 149,
+    "courseName": "Cosmetic Dermatology",
+    "description": "Explore the science of cosmetic dermatology and learn about skincare treatments and procedures."
+  },
+
+  {
+    "instructorName": "Sarah Johnson",
+    "instructorImage": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 10,
+    "instructorEmail": "sarah.johnson@example.com",
+    "studentNumber": 20,
+    "rating": 4.8,
+    "price": 199,
+    "courseName": "Makeup Artistry Fundamentals",
+    "description": "Master the basics of makeup artistry, from foundation application to eyeshadow techniques."
+  },
+  {
+    "instructorName": "Sarah Johnson",
+    "instructorImage": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 10,
+    "instructorEmail": "sarah.johnson@example.com",
+    "studentNumber": 20,
+    "rating": 4.8,
+    "price": 199,
+    "courseName": "Hairstyling and Updos",
+    "description": "Master the basics of makeup artistry, from foundation application to eyeshadow techniques."
+  },
+  {
+    "instructorName": "Sarah Johnson",
+    "instructorImage": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 10,
+    "instructorEmail": "sarah.johnson@example.com",
+    "studentNumber": 20,
+    "rating": 4.8,
+    "price": 199,
+    "courseName": "Bridal Makeup and Styling",
+    "description": "Master the basics of makeup artistry, from foundation application to eyeshadow techniques."
+  },
+  {
+    "instructorName": "Michael Nguyen",
+    "instructorImage": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 8,
+    "instructorEmail": "michael.nguyen@example.com",
+    "studentNumber": 15,
+    "rating": 4.6,
+    "price": 149,
+    "courseName": "Hairstyling for Special Occasions",
+    "description": "Learn various hairstyling techniques to create stunning looks for weddings and other special events."
+  },
+  {
+    "instructorName": "Sarah Johnson",
+    "instructorImage": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 15,
+    "instructorEmail": "sarah.johnson@example.com",
+    "studentNumber": 25,
+    "rating": 4.9,
+    "price": 199,
+    "courseName": "Mastering Makeup Artistry",
+    "description": "Become a skilled makeup artist with our comprehensive course covering various techniques and styles."
+  },
+  {
+    "instructorName": "Michael Anderson",
+    "instructorImage": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 10,
+    "instructorEmail": "michael.anderson@example.com",
+    "studentNumber": 18,
+    "rating": 4.7,
+    "price": 149,
+    "courseName": "Beauty Basics",
+    "description": "Learn the fundamentals of beauty and gain essential skills for a successful career in the beauty industry."
+  },
+  {
+    "instructorName": "Michael Anderson",
+    "instructorImage": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 12,
+    "instructorEmail": "emily.johnson@example.com",
+    "studentNumber": 25,
+    "rating": 4.7,
+    "price": 199,
+    "courseName": "Beauty Makeup Artistry",
+    "description": "Master the art of beauty makeup and learn techniques to enhance facial features and create stunning looks."
+  },
+  
+  {
+    "instructorName": "Sophia Martinez",
+    "instructorImage": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "availableSeats": 8,
+    "instructorEmail": "sophia.martinez@example.com",
+    "studentNumber": 18,
+    "rating": 4.9,
+    "price": 149,
+    "courseName": "Special Effects Makeup",
+    "description": "Explore the world of special effects makeup and learn to create realistic wounds, scars, and fantastical characters."
+  },
+  {
+  "instructorName": "Jane Smith",
+  "instructorImage": "https://images.unsplash.com/photo-1492446845049-9c50cc313f00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "availableSeats": 5,
+  "instructorEmail": "jane.smith@example.com",
+  "studentNumber": 15,
+  "rating": 4.8,
+  "price": 149,
+  "courseName": "Skin Care Essentials",
+  "description": "Discover the fundamentals of skincare and gain hands-on experience in maintaining healthy and radiant skin."
+},
+{
+  "instructorName": "Sophia Martinez",
+  "instructorImage": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+  "availableSeats": 10,
+  "instructorEmail": "sophia.martinez@example.com",
+  "studentNumber": 20,
+  "rating": 4.5,
+  "price": 99,
+  "courseName": "Advanced Makeup Artistry",
+  "description": "Learn advanced makeup techniques and create stunning looks for various occasions."
+}
+]

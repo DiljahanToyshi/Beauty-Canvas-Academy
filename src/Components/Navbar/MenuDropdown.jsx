@@ -3,6 +3,9 @@ import {  useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Image from "./Imgae";
+import Instructors from "../pages/Instructors/Instructors";
+import Classes from "../pages/Classes/Classes";
+import Dashboard from "../pages/Home/Dashboard/Dashboard";
 
 const MenuDropdown = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -60,6 +63,24 @@ const MenuDropdown = () => {
                 </Link>
               </>
             )}
+            <Link
+              to="/instructors"
+              className="block md:hidden px-4 py-3 hover:bg-slate-500 transition font-semibold"
+            >
+              <Instructors></Instructors>
+            </Link>
+            <Link
+              to="/classes"
+              className="block md:hidden px-4 py-3 hover:bg-slate-500 transition font-semibold"
+            >
+              <Classes></Classes>
+            </Link>
+            <Link
+              to="/dashboard"
+              className="block md:hidden px-4 py-3 hover:bg-slate-500 transition font-semibold"
+            >
+              <Dashboard></Dashboard>{" "}
+            </Link>
           </div>
         </div>
       )}
