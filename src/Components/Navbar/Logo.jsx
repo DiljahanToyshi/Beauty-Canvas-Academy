@@ -5,11 +5,10 @@ const Logo = () => {
   return (
     <Link to="/">
       <img
-        className="hidden md:block"
+        className="hidden md:block w-20 rounded-full"
         src={logoImg}
         alt="logo"
-        width="100"
-        height="100"
+       
       />
     </Link>
   );
