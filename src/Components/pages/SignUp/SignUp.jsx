@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "../../../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const auth = getAuth(app);
@@ -27,32 +28,32 @@ const SignUp = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
 
-      //   updateUserProfile(data.name, data.photoURL)
-      //     .then(() => {
-      //       const saveUser = { name: data.name, email: data.email };
-      //       fetch("http://localhost:5000/users", {
-      //         method: "POST",
-      //         headers: {
-      //           "content-type": "application/json",
-      //         },
-      //         body: JSON.stringify(saveUser),
-      //       })
-      //         .then((res) => res.json())
-      //         .then((data) => {
-      //           if (data.insertedId) {
-      //             reset();
-      //             Swal.fire({
-      //               position: "top-end",
-      //               icon: "success",
-      //               title: "User created successfully.",
-      //               showConfirmButton: false,
-      //               timer: 1500,
-      //             });
-      //             navigate("/");
-      //           }
-      //         });
-      //     })
-      //     .catch((error) => console.log(error));
+        // updateUserProfile(data.name, data.photoURL)
+        //   .then(() => {
+        //     const saveUser = { name: data.name, email: data.email };
+        //     fetch("http://localhost:5000/users", {
+        //       method: "POST",
+        //       headers: {
+        //         "content-type": "application/json",
+        //       },
+        //       body: JSON.stringify(saveUser),
+        //     })
+        //       .then((res) => res.json())
+        //       .then((data) => {
+        //         if (data.insertedId) {
+        //           reset();
+        //           Swal.fire({
+        //             position: "top-center",
+        //             icon: "success",
+        //             title: "User created successfully.",
+        //             showConfirmButton: false,
+        //             timer: 1500,
+        //           });
+        //           navigate("/");
+        //         }
+        //       });
+        //   })
+        //   .catch((error) => console.log(error));
     });
   };
   const handleGoogleSignIn = () => {
@@ -163,7 +164,7 @@ const SignUp = () => {
                     className="label-text-alt link link-hover text-center"
                   >
                     ALready have an account?{" "}
-                    <span className="text-slate-600">Please signup</span>
+                    <span className="text-slate-600">Please Login</span>
                   </Link>
                 </p>
               </div>

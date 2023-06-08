@@ -36,21 +36,30 @@ const ClassDetails = ({ course }) => {
           alt="course"
         />
       </div>
-      <div className="font-semibold text-lg">Instructor: {instructorName}</div>
-      <div className="font-light text-2xl text-neutral-800">
-        Coursename: {courseName}
-      </div>
-      <div className="font-light text-2xl text-neutral-800">
-        Course Rating: {rating}
-      </div>
-      <div className="font-semibold text-lg">Description:{description}</div>
       <div className="font-semibold text-lg">
-        Available Seat: {availableSeats}
+        {" "}
+        <span className="font-bold">Instructor:</span> {instructorName}
       </div>
-      <div className="font-semibold text-lg">Duration: {duration}Month</div>
+      <div className="font-light text-lg text-neutral-800">
+        <span className="font-bold"> Coursename: </span>
+        {courseName}
+      </div>
+      <div className="font-light text-lg text-neutral-800">
+        <span className="font-bold"> Course Rating:</span> {rating}
+      </div>
+      <div className="font-semibold text-lg"><span className="font-bold">Description:</span>{description}</div>
+      <div className="font-semibold text-lg">
+        <span className="font-bold"> Available Seat:</span> {availableSeats}
+      </div>
+      <div className="font-semibold text-lg">
+        <span className="font-bold">Duration: </span>
+        {duration}Month
+      </div>
 
       <div className="flex flex-row items-center gap-3">
-        <div className="font-semibold">Price: {price}$</div>
+        <div className="font-semibold">
+          <span className="font-bold">Price:</span> {price}$
+        </div>
         <Link to={`/book/${_id}`}>
           <button className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50">
             Book Now

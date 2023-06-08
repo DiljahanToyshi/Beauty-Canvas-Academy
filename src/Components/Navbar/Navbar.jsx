@@ -13,8 +13,13 @@ const Navbar = () => {
       <div className="py-4 border-b-[1px]">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-2 md:gap-0">
-            <Logo />
-
+            <div className="flex items-center ">
+              {" "}
+              <Logo />
+              <div className=" md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-slate-500 transition cursor-pointer">
+                The Beauty Canvas Academy
+              </div>
+            </div>
             <Link to="/instructors" className="sm:hidden md:block">
               Instructors
             </Link>

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 const Instructordetails = ({ item }) => {
   const {
@@ -35,11 +34,7 @@ const Instructordetails = ({ item }) => {
       </div>
       <div className="flex flex-row items-center gap-3">
         <div className="font-semibold">Price: {price}$</div>
-        <Link to={`/book/${_id}`}>
-          <button className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50">
-            Book Now
-          </button>
-        </Link>
+      
       </div>
     </div>
   );

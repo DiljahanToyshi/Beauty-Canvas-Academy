@@ -10,6 +10,7 @@ import { FaGoogle } from "react-icons/fa";
 import { app } from "../../../Firebase/firebase.config";
 import { AuthContext } from "../../providers/AuthProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const auth = getAuth(app);
@@ -47,7 +48,16 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+           Swal.fire({
+             title: "User Login Successful.",
+             showClass: {
+               popup: "animate__animated animate__fadeInDown",
+             },
+             hideClass: {
+               popup: "animate__animated animate__fadeOutUp",
+             },
+           });
+           console.log(loggedUser);
         form.reset();
         navigate(from, { replace: true });
       })
@@ -62,7 +72,7 @@ const Login = () => {
         console.log(loggedUser);
         if (!loggedUser.emailVerified) {
         }
-        setSuccess("User login successful.");
+        setSuccess("User login successfully.");
         setError("");
       })
       .catch((error) => {
