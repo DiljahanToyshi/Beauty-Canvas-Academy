@@ -1,19 +1,41 @@
+import { Link } from "react-router-dom";
 
 const CoursesCard = ({course}) => {
-     const { _id, title, img, price } = course;
+     const { _id, courseImg, instructorName,availableSeats,studentNumber,price,category,duration,courseName,description } = course;
      return (
-       <div className="card w-96 bg-base-100 shadow-xl">
-         <figure className="px-10 pt-10">
-           <img src={img} alt="Shoes" className="rounded-xl" />
-         </figure>
-         <div className="card-body">
-           <h2 className="card-title">{title}</h2>
-           <p className="text-xl text-orange-500">Price: ${price}</p>
-           <div className="card-actions">
-             <Link to={`/book/${_id}`}>
-               <button className="btn btn-primary">Book Now</button>
-             </Link>
-           </div>
+       <div className="flex flex-col gap-2 w-full group">
+         <div
+           className="
+            aspect-square 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          "
+         >
+           <img
+             className="
+              object-cover 
+              h-full 
+              w-full 
+              group-hover:scale-110 
+              transition
+            "
+             src={courseImg}
+             alt="course"
+           />
+         </div>
+         {/* <div className="font-semibold text-lg">{room.location}</div> */}
+         <div className="font-light text-2xl text-neutral-800">
+           {courseName}
+         </div>
+         <div className="flex flex-row items-center gap-3">
+           <div className="font-semibold">Price: {price}$</div>
+           <Link to={`/book/${_id}`}>
+             <button className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50">
+               Book Now
+             </button>
+           </Link>
          </div>
        </div>
      );
