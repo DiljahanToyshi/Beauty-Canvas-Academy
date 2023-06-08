@@ -6,11 +6,13 @@ import SignUp from "../pages/SignUp/SignUp";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import Dashboard from "../pages/Home/Dashboard/Dashboard";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    // errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -29,11 +31,11 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login></Login>,
       },
       {
-        path: "/signup",
+        path: "signup",
         element: <SignUp></SignUp>,
       },
     ],

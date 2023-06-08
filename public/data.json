@@ -8,7 +8,7 @@
     "courseImg":"https://media.istockphoto.com/id/1383236866/photo/a-faceless-woman-watches-online-training-from-a-professional-makeup-artist-on-a-laptop.jpg?s=612x612&w=0&k=20&c=GJI_P1qbJDQEYcUAzRi9cKsGV3xX9PNZLoykkIKSO5M=",
     "rating": 4.8,
     "courseName": "Advanced Makeup Techniques",
-    "description": "Learn advanced makeup techniques and create stunning looks for special occasions and events.",
+    "description": "Learn advanced makeup techniques and create stunning looks for   special occasions and events.",
     "price": 199,
     "duration":4,
     "category": "popular"
@@ -207,8 +207,7 @@
     "courseName": "Skin Care Essentials",
     "description": "Discover the fundamentals of skincare and gain hands-on experience in maintaining healthy and radiant skin."
   },
-{
-  "courseImg": "https://i.pinimg.com/564x/6e/3d/15/6e3d15127e3cfdf4aaf30042ab19a669.jpg",
+{"courseImg":"https://i.pinimg.com/564x/6e/3d/15/6e3d15127e3cfdf4aaf30042ab19a669.jpg",
   "_id": "64813847baa5f9e2afce2c86",
   "instructorName": "Sophia Martinez",
   "instructorImage": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",

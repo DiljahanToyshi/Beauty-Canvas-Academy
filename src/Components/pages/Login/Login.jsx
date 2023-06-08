@@ -136,7 +136,7 @@ const Login = () => {
               </div>
 
               <p className="mt-2 ">
-                <Link to="/signup" className="label-text-alt link link-hover">
+                <Link to="/signup" className="label-text-alt link link-hover text-center">
                   New to The Beauty Canvas Academy?{" "}
                   <span className="text-slate-600">
                     Please create an account

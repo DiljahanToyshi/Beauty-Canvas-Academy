@@ -9,7 +9,6 @@ const useCourses = () => {
       .then((data) => {
         setCourses(data);
         setloading(false);
-        console.log(data);
       });
   }, [])
   return [courses,loading];

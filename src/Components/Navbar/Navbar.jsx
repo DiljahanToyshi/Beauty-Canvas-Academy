@@ -14,15 +14,15 @@ const Navbar = () => {
         <Container>
           <div className="flex flex-row  items-center justify-between gap-2 md:gap-0">
             <Logo />
-            {/* <Search /> */}
+
             <Link to="/instructors" className="sm:hidden md:block">
-              <Instructors></Instructors>
+              Instructors
             </Link>
             <Link to="/classes" className="sm:hidden md:block">
-              <Classes></Classes>
+              Classes{" "}
             </Link>
             <Link to="/dashboard" className="sm:hidden md:block">
-              <Dashboard></Dashboard>{" "}
+              Dashboard{" "}
             </Link>
             <MenuDropdown />
           </div>

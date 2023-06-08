@@ -158,7 +158,10 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <p>
-                  <Link to="/login" className="label-text-alt link link-hover">
+                  <Link
+                    to="/login"
+                    className="label-text-alt link link-hover text-center"
+                  >
                     ALready have an account?{" "}
                     <span className="text-slate-600">Please signup</span>
                   </Link>
