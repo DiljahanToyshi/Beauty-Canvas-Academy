@@ -4,11 +4,11 @@ const useCourses = () => {
   const [courses, setCourses] = useState([]);
   const [loading,setloading] = useState(true)
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/courses")
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
-        setloading(false)
+        setloading(false);
         console.log(data);
       });
   }, [])
