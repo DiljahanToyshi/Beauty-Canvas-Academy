@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Container from "../Container";
 import CoursesCard from "./CoursesCard";
 import useCourses from "../../../../hooks/useCourses";

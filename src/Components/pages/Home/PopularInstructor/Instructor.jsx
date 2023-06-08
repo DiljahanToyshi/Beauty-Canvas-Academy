@@ -9,6 +9,7 @@ const Instructor = ({ course }) => {
     studentNumber,
     price,
     category,
+    rating,
     duration,
     courseName,
     description,
@@ -24,7 +25,7 @@ const Instructor = ({ course }) => {
         {instructorName}
       </p>
       <p className="text-gray-700 ">Course: {courseName}</p>
-      <p className="text-gray-700 ">StudentNumber: {studentNumber}</p>
+      <p className="text-gray-700 ">Rating: {rating}</p>
       <p className="text-gray-700 font-bold">Price: {price}$</p>
       <Link to={`/book/${_id}`}>
         <button className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50">

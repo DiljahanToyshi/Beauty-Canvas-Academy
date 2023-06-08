@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 
-const Instructordetails = ({ item }) => {
+const ClassDetails = ({ course }) => {
   const {
-    _id, instructorImage, availableSeats, instructorEmail, studentNumber, courseImg, rating, description, courseName, price, duration, category,instructorName } = item;
+    _id,
+    availableSeats,
+    
+    courseImg,
+    rating,
+    description,
+    courseName,
+    price,
+    duration,
+   
+    instructorName,
+  } = course;
   return (
     <div className="flex flex-col gap-2 w-full group">
       <div
@@ -21,18 +32,23 @@ const Instructordetails = ({ item }) => {
               w-full 
               transition
             "
-          src={instructorImage}
+          src={courseImg}
           alt="course"
         />
       </div>
-      <div className="font-semibold text-lg">{instructorName}</div>
-      <div className="font-semibold text-lg">Email:{instructorEmail}</div>
+      <div className="font-semibold text-lg">Instructor: {instructorName}</div>
       <div className="font-light text-2xl text-neutral-800">
         Coursename: {courseName}
       </div>
       <div className="font-light text-2xl text-neutral-800">
         Course Rating: {rating}
       </div>
+      <div className="font-semibold text-lg">Description:{description}</div>
+      <div className="font-semibold text-lg">
+        Available Seat: {availableSeats}
+      </div>
+      <div className="font-semibold text-lg">Duration: {duration}Month</div>
+
       <div className="flex flex-row items-center gap-3">
         <div className="font-semibold">Price: {price}$</div>
         <Link to={`/book/${_id}`}>
@@ -45,4 +61,4 @@ const Instructordetails = ({ item }) => {
   );
 };
 
-export default Instructordetails;
+export default ClassDetails;
