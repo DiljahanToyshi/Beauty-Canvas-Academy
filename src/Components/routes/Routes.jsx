@@ -13,6 +13,7 @@ import ManageClass from "../pages/Home/Dashboard/Admin/ManageClass";
 import EnrolledClass from "../pages/Home/Dashboard/Student/EnrolledClass";
 import PaymentHistory from "../pages/Home/Dashboard/Student/PaymentHistory";
 import SelectedCourse from "../pages/Home/Dashboard/Student/SelectedCourse";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +46,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/manageusers",
@@ -67,7 +72,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/paymenthistory",
         element: <PaymentHistory></PaymentHistory>,
       },
-      { path: "/dashboard/selectcourse", element: <SelectedCourse></SelectedCourse>},
+      {
+        path: "/dashboard/selectcourse",
+        element: <SelectedCourse></SelectedCourse>,
+      },
       // {
       //   path: "dashboard",
       //   element: <Dashboard></Dashboard>,
