@@ -2,10 +2,7 @@ import Container from "../pages/Home/Container";
 import Logo from "./Logo";
 // import Search from "./Search";
 import MenuDropdown from "./MenuDropdown";
-import Instructors from "../pages/Instructors/Instructors";
 import { Link } from "react-router-dom";
-import Classes from "../pages/Classes/Classes";
-import Dashboard from "../pages/Home/Dashboard/Dashboard";
 
 const Navbar = () => {
   return (
@@ -20,13 +17,13 @@ const Navbar = () => {
                 The Beauty Canvas Academy
               </div>
             </div>
-            <Link to="/instructors" className="sm:hidden md:block">
+            <Link to="/instructors" className="hidden md:block">
               Instructors
             </Link>
-            <Link to="/classes" className="sm:hidden md:block">
+            <Link to="/classes" className="hidden md:block">
               Classes{" "}
             </Link>
-            <Link to="/dashboard" className="sm:hidden md:block">
+            <Link to="/dashboard/selectcourse" className="hidden md:block">
               Dashboard{" "}
             </Link>
             <MenuDropdown />

@@ -1,16 +1,16 @@
-
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useCart from "../../../../../hooks/useCart";
-import Container from "../../Container";
 
 const SelectedCourse = () => {
   const [cart, refetch] = useCart();
   console.log(cart);
   const total = cart.reduce((sum, course) => course.price + sum, 0);
 
+
   const handleDelete = (course) => {
+      console.log(course);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -21,7 +21,7 @@ const SelectedCourse = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:500/carts/${course._id}`, {
+        fetch(`http://localhost:5000/carts/${course._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -36,9 +36,9 @@ const SelectedCourse = () => {
   };
 
   return (
-    <Container>
-      <p className="text-5xl font-semibold text-center ">
-        Our Popular Course Program
+    <>
+      <p className="text-5xl my-3 font-semibold text-center ">
+        Selected Course
       </p>
       <div className="w-full">
         <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
@@ -76,8 +76,8 @@ const SelectedCourse = () => {
                       </div>
                     </div>
                   </td>
-                  <td>{course.coursName}</td>
-                  <td className="text-end">${course.price}</td>
+                  <td>{course.courseName}</td>
+                  <td>${course.price}</td>
                   <td>
                     <button
                       onClick={() => handleDelete(course)}
@@ -92,7 +92,7 @@ const SelectedCourse = () => {
           </table>
         </div>
       </div>
-    </Container>
+    </>
   );
 };
 

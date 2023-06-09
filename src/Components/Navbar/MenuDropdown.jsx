@@ -3,9 +3,6 @@ import {  useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Image from "./Imgae";
-import Instructors from "../pages/Instructors/Instructors";
-import Classes from "../pages/Classes/Classes";
-import Dashboard from "../pages/Home/Dashboard/Dashboard";
 
 const MenuDropdown = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,14 +12,14 @@ const MenuDropdown = () => {
   //   }, [])
   return (
     <div className="relative">
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-4 md:py-1 md:px-2 border-[1px] border-slate-500 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
-        >
-          <AiOutlineMenu />
-          <div className="hidden md:block">
-            <Image />
-          </div>
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-4 md:py-1 md:px-2 border-[1px] border-slate-500 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+      >
+        <AiOutlineMenu />
+        <div className="hidden md:block">
+          <Image />
+        </div>
       </div>
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-slate-700 overflow-hidden right-0 top-12 text-sm">
@@ -60,19 +57,19 @@ const MenuDropdown = () => {
               to="/instructors"
               className="block md:hidden px-4 py-3 hover:bg-slate-500 transition font-semibold"
             >
-              <Instructors></Instructors>
+              Instructors{" "}
             </Link>
             <Link
               to="/classes"
               className="block md:hidden px-4 py-3 hover:bg-slate-500 transition font-semibold"
             >
-              <Classes></Classes>
+              Classes{" "}
             </Link>
             <Link
-              to="/dashboard"
+              to="/dashboard/selectcourse"
               className="block md:hidden px-4 py-3 hover:bg-slate-500 transition font-semibold"
             >
-              <Dashboard></Dashboard>{" "}
+              Dashboard{" "}
             </Link>
           </div>
         </div>

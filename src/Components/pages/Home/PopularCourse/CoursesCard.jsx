@@ -16,6 +16,7 @@ const CoursesCard = ({ course }) => {
     duration,
     courseName,
     description,
+    rating
   } = course;
   const { user } = useContext(AuthContext);
   const [,refetch] = useCart();
@@ -102,10 +103,33 @@ const CoursesCard = ({ course }) => {
           alt="course"
         />
       </div>
-      {/* <div className="font-semibold text-lg">{room.location}</div> */}
-      <div className="font-light text-2xl text-neutral-800">{courseName}</div>
+      <div className="font-semibold text-lg">
+        {" "}
+        <span className="font-bold">Instructor:</span> {instructorName}
+      </div>
+      <div className="font-light text-lg text-neutral-800">
+        <span className="font-bold"> Coursename: </span>
+        {courseName}
+      </div>
+      <div className="font-light text-lg text-neutral-800">
+        <span className="font-bold"> Course Rating:</span> {rating}
+      </div>
+      <div className="font-semibold text-lg">
+        <span className="font-bold">Description:</span>
+        {description}
+      </div>
+      <div className="font-semibold text-lg">
+        <span className="font-bold"> Available Seat:</span> {availableSeats}
+      </div>
+      <div className="font-semibold text-lg">
+        <span className="font-bold">Duration: </span>
+        {duration}Month
+      </div>
+
       <div className="flex flex-row items-center gap-3">
-        <div className="font-semibold">Price: {price}$</div>
+        <div className="font-semibold">
+          <span className="font-bold">Price:</span> {price}$
+        </div>
         <Link>
           <button
             onClick={() => handleAddToCart(course)}

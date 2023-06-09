@@ -5,7 +5,6 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
-import Dashboard from "../pages/Home/Dashboard/Dashboard";
 // import ErrorPage from "../pages/Error/ErrorPage";
 import ManageUsers from "../pages/Home/Dashboard/Admin/ManageUsers";
 import AdminHOme from "../pages/Home/Dashboard/Admin/AdminHOme";
@@ -16,6 +15,7 @@ import SelectedCourse from "../pages/Home/Dashboard/Student/SelectedCourse";
 import PrivateRoute from "./PrivateRoute";
 import AddCourse from "../pages/Home/Dashboard/Instructor/AddCourse";
 import MyCourse from "../pages/Home/Dashboard/Instructor/MyCourse";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -50,40 +50,40 @@ export const router = createBrowserRouter([
     path: "dashboard",
     element: (
       <PrivateRoute>
-        <Dashboard></Dashboard>
+        <DashboardLayout></DashboardLayout>{" "}
       </PrivateRoute>
     ),
     children: [
       {
-        path: "/dashboard/manageusers",
+        path: "manageusers",
         element: <ManageUsers></ManageUsers>,
       },
       {
-        path: "/dashboard/adminhome",
+        path: "adminhome",
         element: <AdminHOme></AdminHOme>,
       },
       {
-        path: "/dashboard/manageclass",
+        path: "manageclass",
         element: <ManageClass></ManageClass>,
       },
       {
-        path: "/dashboard/enrolledclasses",
+        path: "enrolledclasses",
         element: <EnrolledClass></EnrolledClass>,
       },
       {
-        path: "/dashboard/paymenthistory",
+        path: "paymenthistory",
         element: <PaymentHistory></PaymentHistory>,
       },
       {
-        path: "/dashboard/selectcourse",
+        path: "selectcourse",
         element: <SelectedCourse></SelectedCourse>,
       },
       {
-        path: "dashboard/addcourse",
+        path: "addcourse",
         element: <AddCourse></AddCourse>,
       },
       {
-        path: "dashboard/mycourse",
+        path: "mycourse",
         element: <MyCourse></MyCourse>,
       },
     ],
