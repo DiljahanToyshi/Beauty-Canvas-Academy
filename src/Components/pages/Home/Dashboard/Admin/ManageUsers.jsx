@@ -12,6 +12,7 @@ const ManageUsers = () => {
   });
 
   const handleMakeAdmin = (user) => {
+    console.log(user._id)
     fetch(`http://localhost:5000/students/admin/${user._id}`, {
       method: "PATCH",
     })
@@ -31,7 +32,8 @@ const ManageUsers = () => {
       });
   };
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/students/handleMakeInstructor/${user._id}`, {
+    console.log(user)
+    fetch(`http://localhost:5000/students/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -50,9 +52,7 @@ const ManageUsers = () => {
       });
   };
 
-  // const handleDelete = user => {
-
-  // }
+  
 
   return (
     <div className="w-full">
@@ -79,36 +79,20 @@ const ManageUsers = () => {
                 <td>{user.email}</td>
                 <td>{user.role ? user.role : "Student"}</td>
                 <td>
-                  {/* {user.role === "admin" ? (
+                  {user.role !== "Instructor" && (
                     <button
                       className="btn btn-ghost bg-green-500  text-white"
-                    >
-                      Admin{" "}
-                    </button>
-                  ) : user.role === "instructor" ? (
-                    "Instructor"
-                  ) : (
-                    <button
-                      onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-ghost bg-green-500  text-white"
-                    >
-                      Student{" "}
-                    </button>
-                  )} */}
-                  {user.role !== "instructor" && (
-                    <button
-                      className="btn btn-ghost bg-green-500  text-white"
-                      onClick={() => handleMakeAdmin(user.id)}
-                      disabled={user.role === "admin"}
+                      onClick={() => handleMakeInstructor(user)}
+                      disabled={user.role === "Admin"}
                     >
                       Make Instructor
                     </button>
                   )}
-                  {user.role !== "admin" && (
+                  {user.role !== "Admin" && (
                     <button
                       className="ml-3 btn btn-ghost bg-red-500  text-white"
                       onClick={() => handleMakeAdmin(user)}
-                      disabled={user.role === "instructor"}
+                      disabled={user.role === "Instructor"}
                     >
                       Make Admin
                     </button>
