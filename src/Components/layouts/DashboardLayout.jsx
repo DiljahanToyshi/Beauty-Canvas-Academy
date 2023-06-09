@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 import useAdmin from "../hooks/useAdmin";
 import useCart from "../../hooks/useCart";
+import useInstructor from "../../hooks/useInstructor";
 
 const DashboardLayout = () => {
   const [cart] = useCart();
@@ -9,6 +10,7 @@ const DashboardLayout = () => {
   // TODO: load data from the server to have dynamic isAdmin based on Data
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <div className="drawer drawer-mobile ">
@@ -30,14 +32,21 @@ const DashboardLayout = () => {
               <li>
                 <NavLink to="/dashboard/adminhome">Admin Home</NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboard/addclass"> Add a Class</NavLink>
-              </li>
+
               <li>
                 <NavLink to="/dashboard/manageusers">Manage users</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageclass">Manage Classes</NavLink>
+              </li>
+            </>
+          ) : isInstructor ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/addcourse"> Add a Course</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/mycourse">My Course</NavLink>
               </li>
             </>
           ) : (
@@ -62,14 +71,10 @@ const DashboardLayout = () => {
 
           <div className="divider"></div>
           <li>
-            <NavLink to="/">
-              Home
-            </NavLink>{" "}
+            <NavLink to="/">Home</NavLink>{" "}
           </li>
           <li>
-            <NavLink to="/classes">
-              Our Courses
-            </NavLink>
+            <NavLink to="/classes">Our Courses</NavLink>
           </li>
         </ul>
       </div>

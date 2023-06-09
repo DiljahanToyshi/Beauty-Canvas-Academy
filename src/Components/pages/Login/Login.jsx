@@ -1,21 +1,17 @@
 import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  GoogleAuthProvider,
   getAuth,
   signInWithEmailAndPassword,
-  signInWithPopup,
 } from "firebase/auth";
-import { FaGoogle } from "react-icons/fa";
 import { app } from "../../../Firebase/firebase.config";
 import { AuthContext } from "../../providers/AuthProvider";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
+import SocialLogin from "../../SocialLogin/SocialLogin";
 
 const Login = () => {
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
-  const [user, setUser] = useState(null);
   const [show, setSHow] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -24,8 +20,7 @@ const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/"; 
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -49,7 +44,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
            Swal.fire({
-             title: "User Login Successful.",
+             title: "Student Login Successfully.",
              showClass: {
                popup: "animate__animated animate__fadeInDown",
              },
@@ -79,17 +74,7 @@ const Login = () => {
         setError(error.message);
       });
   };
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser.photoURL);
-        setUser(loggedInUser);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+ 
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -158,15 +143,7 @@ const Login = () => {
               <button className="btn bg-slate-400 text-white">Login</button>
             </div>
           </form>
-        
-          <div className="text-center">
-            <button
-              onClick={handleGoogleSignIn}
-              className="btn btn-outline text-center mb-5 mt-3"
-            >
-              <FaGoogle className="mr-2" /> Login with Google
-            </button>
-          </div>
+        <SocialLogin></SocialLogin>
 
           <p className="text-red-600 text-xl font-semibold">{error}</p>
           <p className="text-green-600 text-xl font-semibold">{success}</p>

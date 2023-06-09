@@ -1,18 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
-import { FaGoogle } from "react-icons/fa";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { app } from "../../../Firebase/firebase.config";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../../SocialLogin/SocialLogin";
 
 const SignUp = () => {
-  const auth = getAuth(app);
-
-  const provider = new GoogleAuthProvider();
-  const [user, setUser] = useState(null);
 
   const {
     register,
@@ -20,8 +13,10 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
+  
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
@@ -56,17 +51,7 @@ const SignUp = () => {
         .catch((error) => console.log(error));
     });
   };
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser.photoURL);
-        setUser(loggedInUser);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+  
 
   return (
     <>
@@ -176,15 +161,7 @@ const SignUp = () => {
                 />
               </div>
             </form>
-
-            <div className="text-center">
-              <button
-                onClick={handleGoogleSignIn}
-                className="btn btn-outline text-center mb-5 mt-3"
-              >
-                <FaGoogle className="mr-2" /> Login with Google
-              </button>
-            </div>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
