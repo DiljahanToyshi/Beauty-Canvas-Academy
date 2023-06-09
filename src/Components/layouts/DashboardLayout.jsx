@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   
-const isAdmin= false;
+const isAdmin= true;
 const isInstructor = false;
   return (
     <div className="drawer lg:drawer-open">
