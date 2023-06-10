@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-  // const [axiosSecure] = useAxiosSecure();
+  const [axiosSecure] = useAxiosSecure();
   const { data: students = [], refetch } = useQuery(["students"], async () => {
-    const res = await fetch("http://localhost:5000/students");
-    // const res = await axiosSecure.get('/users')
-    return res.json();
-    // return res.data;
+    // const res = await fetch("http://localhost:5000/students");
+    const res = await axiosSecure.get('/students')
+    // return res.json();
+    return res.data;
   });
 
   const handleMakeAdmin = (user) => {
