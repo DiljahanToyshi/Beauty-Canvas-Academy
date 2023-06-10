@@ -5,7 +5,7 @@ import useCart from "../../../../../hooks/useCart";
 
 const SelectedCourse = () => {
   const [cart, refetch] = useCart();
-  console.log(cart);
+ 
   const total = cart.reduce((sum, course) => course.price + sum, 0);
 
 

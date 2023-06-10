@@ -2,12 +2,13 @@
 import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import useInstructor from "../../hooks/useInstructor";
 
 
 const DashboardLayout = () => {
  const {user} = useContext(AuthContext);
 const isAdmin= false;
-const isInstructor = true;
+const [isInstructor] = useInstructor();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -24,7 +25,7 @@ const isInstructor = true;
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 font-serif text-lg">
           <li className="text-center font-semibold text-2xl">
-            <span>{user?.displayName}'s Dashboard</span>
+            <span>{user?.displayName} Dashboard</span>
           </li>
           {isAdmin ? (
             <>

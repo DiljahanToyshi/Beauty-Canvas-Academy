@@ -29,7 +29,7 @@ const Navbar = () => {
               Classes{" "}
             </Link>
             <Link to="/dashboard/selectcourse" className="hidden md:block">
-              <span>{user?.displayName}'s</span> Dashboard{" "}
+              {user?.displayName} Dashboard{" "}
             </Link>
             <MenuDropdown />
           </div>
