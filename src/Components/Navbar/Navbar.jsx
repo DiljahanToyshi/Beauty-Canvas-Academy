@@ -1,10 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
+import { useContext } from "react";
 import Container from "../pages/Home/Container";
 import Logo from "./Logo";
 // import Search from "./Search";
 import MenuDropdown from "./MenuDropdown";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext);
+ 
   return (
     <div className="fixed w-full bg-slate-700 text-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">
@@ -17,14 +22,14 @@ const Navbar = () => {
                 The Beauty Canvas Academy
               </div>
             </div>
-            <Link to="/instructors" className="hidden md:block">
+            <Link to="/instructors" className="hidden md:block ">
               Instructors
             </Link>
             <Link to="/classes" className="hidden md:block">
               Classes{" "}
             </Link>
             <Link to="/dashboard/selectcourse" className="hidden md:block">
-              Dashboard{" "}
+              <span>{user?.displayName}'s</span> Dashboard{" "}
             </Link>
             <MenuDropdown />
           </div>

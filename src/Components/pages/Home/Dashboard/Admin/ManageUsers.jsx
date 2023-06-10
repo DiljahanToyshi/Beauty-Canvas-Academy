@@ -81,7 +81,7 @@ const ManageUsers = () => {
                 <td>
                   {user.role !== "Instructor" && (
                     <button
-                      className="btn btn-ghost bg-green-500  text-white"
+                      className="btn btn-ghost bg-green-400 font-semibold text-white"
                       onClick={() => handleMakeInstructor(user)}
                       disabled={user.role === "Admin"}
                     >
@@ -90,7 +90,7 @@ const ManageUsers = () => {
                   )}
                   {user.role !== "Admin" && (
                     <button
-                      className="ml-3 btn btn-ghost bg-red-500  text-white"
+                      className="ml-3 btn btn-ghost bg-red-400 font-semibold text-white"
                       onClick={() => handleMakeAdmin(user)}
                       disabled={user.role === "Instructor"}
                     >

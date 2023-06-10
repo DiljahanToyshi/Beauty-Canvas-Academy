@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 .drawer-side a.active{
-    color:white
+    color:white;
+    font-weight:300;
+    font-size: larger;
+    
 }
 .drawer-side a{
     background-color:transparent;
