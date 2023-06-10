@@ -7,7 +7,6 @@ import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 // import ErrorPage from "../pages/Error/ErrorPage";
 import ManageUsers from "../pages/Home/Dashboard/Admin/ManageUsers";
-import AdminHOme from "../pages/Home/Dashboard/Admin/AdminHOme";
 import ManageClass from "../pages/Home/Dashboard/Admin/ManageClass";
 import EnrolledClass from "../pages/Home/Dashboard/Student/EnrolledClass";
 import PaymentHistory from "../pages/Home/Dashboard/Student/PaymentHistory";
@@ -16,6 +15,8 @@ import PrivateRoute from "./PrivateRoute";
 import AddCourse from "../pages/Home/Dashboard/Instructor/AddCourse";
 import MyCourse from "../pages/Home/Dashboard/Instructor/MyCourse";
 import DashboardLayout from "../layouts/DashboardLayout";
+import AdmineROute from "./AdmineROute";
+import InstructorRoute from "./InstructorRoute";
 
 export const router = createBrowserRouter([
   {
@@ -56,15 +57,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "manageusers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdmineROute>
+            <ManageUsers></ManageUsers>
+          </AdmineROute>
+        ),
       },
-      {
-        path: "adminhome",
-        element: <AdminHOme></AdminHOme>,
-      },
+
       {
         path: "manageclass",
-        element: <ManageClass></ManageClass>,
+        element: (
+          <AdmineROute>
+            <ManageClass></ManageClass>
+          </AdmineROute>
+        ),
       },
       {
         path: "enrolledclasses",
@@ -80,11 +86,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "addcourse",
-        element: <AddCourse></AddCourse>,
+        element: (
+          <InstructorRoute>
+            {" "}
+            <AddCourse></AddCourse>
+          </InstructorRoute>
+        ),
       },
       {
         path: "mycourse",
-        element: <MyCourse></MyCourse>,
+        element: (
+          <InstructorRoute>
+            <MyCourse></MyCourse>{" "}
+          </InstructorRoute>
+        ),
       },
     ],
   },

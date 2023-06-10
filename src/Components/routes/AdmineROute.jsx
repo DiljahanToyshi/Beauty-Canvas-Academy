@@ -3,7 +3,7 @@ import useAdmin from "../hooks/useAdmin";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
-const AdminROute = ({ children }) => {
+const AdmineROute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation();
@@ -18,4 +18,4 @@ const AdminROute = ({ children }) => {
   return <Navigate to="/" state={{ from: location }} replace></Navigate>;
 };
 
-export default AdminROute;
+export default AdmineROute;

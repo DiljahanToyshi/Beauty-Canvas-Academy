@@ -30,10 +30,6 @@ const [isInstructor] = useInstructor();
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/adminhome">Admin Home</NavLink>
-              </li>
-
-              <li>
                 <NavLink to="/dashboard/manageusers">Manage users</NavLink>
               </li>
               <li>
