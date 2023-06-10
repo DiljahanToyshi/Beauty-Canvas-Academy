@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext } from "react";
 import Container from "../pages/Home/Container";
 import Logo from "./Logo";
-// import Search from "./Search";
 import MenuDropdown from "./MenuDropdown";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
+
 
 const Navbar = () => {
   const {user} = useContext(AuthContext);
