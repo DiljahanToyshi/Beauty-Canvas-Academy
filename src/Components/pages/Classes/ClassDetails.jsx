@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
-const ClassDetails = ({ course }) => {
+const ClassDetails = ({ course,role }) => {
+ 
   const {
     _id,
     availableSeats,
-    
+    role,
     courseImg,
     rating,
     description,
@@ -14,6 +15,13 @@ const ClassDetails = ({ course }) => {
    
     instructorName,
   } = course;
+
+  const isButtonDisabled =
+    {role} == "Instructor" || {role} == "Admin" || {availableSeats} === 0;
+     const handleBookNow = () => {
+    if (isButtonDisabled) {
+      return;
+    }}
   return (
     <div className="flex flex-col gap-2 w-full group">
       <div
@@ -38,7 +46,7 @@ const ClassDetails = ({ course }) => {
       </div>
       <div className="font-semibold text-lg">
         {" "}
-        <span className="font-bold">Instructor:</span> {instructorName}
+        <span className="font-bold">Instructor:</span> {instructorName}{role} role
       </div>
       <div className="font-light text-lg text-neutral-800">
         <span className="font-bold"> Coursename: </span>
@@ -47,7 +55,10 @@ const ClassDetails = ({ course }) => {
       <div className="font-light text-lg text-neutral-800">
         <span className="font-bold"> Course Rating:</span> {rating}
       </div>
-      <div className="font-semibold text-lg"><span className="font-bold">Description:</span>{description}</div>
+      <div className="font-semibold text-lg">
+        <span className="font-bold">Description:</span>
+        {description}
+      </div>
       <div className="font-semibold text-lg">
         <span className="font-bold"> Available Seat:</span> {availableSeats}
       </div>
@@ -60,8 +71,12 @@ const ClassDetails = ({ course }) => {
         <div className="font-semibold">
           <span className="font-bold">Price:</span> {price}$
         </div>
-        <Link to={`/book/${_id}`}>
-          <button className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50">
+        <Link>
+          <button
+            className="btn btn-neutral text-white rounded-full hover:bg-slate-500 outline-slate-50"
+            disabled={isButtonDisabled}
+            onClick={handleBookNow}
+          >
             Book Now
           </button>
         </Link>

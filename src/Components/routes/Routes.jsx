@@ -103,4 +103,11 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+  // {
+  //   path: "/dashboard/mycourse/:id",
+  //   element: <UpdateCourse></UpdateCourse>,
+  //   loader: (params) =>
+  //     fetch(`http://localhost:5000/courses/${params.id}`),
+  // },
 ]);

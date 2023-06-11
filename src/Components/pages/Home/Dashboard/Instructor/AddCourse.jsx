@@ -5,12 +5,14 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
 const AddCourse = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const onSubmit = (data) => {
@@ -37,7 +39,7 @@ const AddCourse = () => {
           } = data;
           const newItem = {
             instructorName,
-            availableSeats: parseInt(availableSeats),
+            availableSeats,
             email,
             price: parseFloat(price),
             duration: parseFloat(duration),
@@ -46,7 +48,6 @@ const AddCourse = () => {
             courseImg: imgURL,
             studentNumber: parseInt(studentNumber),
           };
-
           axiosSecure.post("/courses", newItem).then((data) => {
             console.log("after posting new course ", data.data);
             if (data.data.insertedId) {
@@ -58,7 +59,8 @@ const AddCourse = () => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-            }
+          
+          navigate('/')  }
           });
         }
       });
