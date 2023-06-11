@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
 
-const useCourses = () => {
-  const [courses, setCourses] = useState([]);
-  const [loading,setloading] = useState(true)
-  useEffect(() => {
-    fetch("http://localhost:5000/courses")
-      .then((res) => res.json())
-      .then((data) => {
-        setCourses(data);
-        setloading(false);
-      });
-  }, [])
-  return [courses,loading];
+
+import {useQuery} from '@tanstack/react-query'
+import { useContext } from 'react';
+import { AuthContext } from '../Components/providers/AuthProvider';
+ const useCourses = () => {
+   const {user} = useContext(AuthContext);
+    const { refetch, data: courses = [] ,isLoading:loading} = useQuery({
+      queryKey: ["courses", user?.email],
+      // enabled: !loading,
+      queryFn: async () => {
+        const res = await fetch("http://localhost:5000/courses");
+       
+        return res.json();
+      },
+    });
+    return [courses,loading,refetch]
 };
 
 export default useCourses;

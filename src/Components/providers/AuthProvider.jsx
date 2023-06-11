@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import { app } from "../../Firebase/firebase.config";
 import axios from "axios";
+import { getRole } from "../../hooks/getRole";
 
 export const AuthContext = createContext(null);
 
@@ -20,9 +21,16 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({children}) => {
+  
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  
+  useEffect(() =>{
+    if(user){
+      getRole(user.email).then(data => setRole(data))
+    }
+  },[user])
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -58,7 +66,6 @@ const AuthProvider = ({children}) => {
      useEffect(() => {
        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
          setUser(currentUser);
-         console.log("current user", currentUser);
 
          // jwt token
          if (currentUser) {
@@ -79,7 +86,8 @@ const AuthProvider = ({children}) => {
        };
      }, []);
 
-  const authInfo = {setUser,
+  const authInfo = {
+    setUser,
     user,
     loading,
     setLoading,
@@ -89,6 +97,8 @@ const AuthProvider = ({children}) => {
     resetPassword,
     logOut,
     updateUserProfile,
+    role,
+    setRole,
   };
 
   return (

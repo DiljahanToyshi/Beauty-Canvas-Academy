@@ -57,7 +57,9 @@ const ManageUsers = () => {
   return (
     <div className="w-full">
       <h3 className="text-3xl text-center font-semibold my-4">
-        Total Users: {students.length}
+Manage Student      </h3>
+      <h3 className="text-exl text-center font-semibold my-4">
+        Total Students: {students.length}
       </h3>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
@@ -68,7 +70,7 @@ const ManageUsers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Action</th>
+              <th className="text-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -81,18 +83,18 @@ const ManageUsers = () => {
                 <td>
                   {user.role !== "Instructor" && (
                     <button
-                      className="btn btn-ghost bg-green-400 font-semibold text-white"
+                      className="btn rounded-full bg-black font-semibold text-white "
                       onClick={() => handleMakeInstructor(user)}
-                      disabled={user.role === "Admin"}
+                      disabled={user.role === "Instructor"}
                     >
                       Make Instructor
                     </button>
                   )}
                   {user.role !== "Admin" && (
                     <button
-                      className="ml-3 btn btn-ghost bg-red-400 font-semibold text-white"
+                      className="ml-3 btn btn-outline rounded-full font-semibold text-black"
                       onClick={() => handleMakeAdmin(user)}
-                      disabled={user.role === "Instructor"}
+                      disabled={user.role === "Admin"}
                     >
                       Make Admin
                     </button>

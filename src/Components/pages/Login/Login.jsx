@@ -44,7 +44,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
            Swal.fire({
-             title: "Student Login Successfully.",
+             title: "Login Successfully.",
              showClass: {
                popup: "animate__animated animate__fadeInDown",
              },
@@ -67,7 +67,7 @@ const Login = () => {
         console.log(loggedUser);
         if (!loggedUser.emailVerified) {
         }
-        setSuccess("User login successfully.");
+        setSuccess("login successfully.");
         setError("");
       })
       .catch((error) => {
@@ -130,8 +130,13 @@ const Login = () => {
                 </div>
               </div>
 
+              <p className="text-red-600 text-xl font-semibold">{error}</p>
+              <p className="text-green-600 text-xl font-semibold">{success}</p>
               <p className="mt-2 ">
-                <Link to="/signup" className="label-text-alt link link-hover text-center">
+                <Link
+                  to="/signup"
+                  className="label-text-alt link link-hover text-center"
+                >
                   New to The Beauty Canvas Academy?{" "}
                   <span className="text-slate-600">
                     Please create an account
@@ -143,10 +148,7 @@ const Login = () => {
               <button className="btn bg-slate-400 text-white">Login</button>
             </div>
           </form>
-        <SocialLogin></SocialLogin>
-
-          <p className="text-red-600 text-xl font-semibold">{error}</p>
-          <p className="text-green-600 text-xl font-semibold">{success}</p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

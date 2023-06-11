@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import useInstructor from "../../hooks/useInstructor";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const DashboardLayout = () => {
- const {user} = useContext(AuthContext);
-const isAdmin= false;
+ const {user,role} = useContext(AuthContext);
+const [isAdmin]= useAdmin();
 const [isInstructor] = useInstructor();
   return (
     <div className="drawer lg:drawer-open">
@@ -26,6 +27,7 @@ const [isInstructor] = useInstructor();
         <ul className="menu p-4 w-80 font-serif text-lg">
           <li className="text-center font-semibold text-2xl">
             <span>{user?.displayName} Dashboard</span>
+            <span> Role: {role} </span>
           </li>
           {isAdmin ? (
             <>
@@ -42,7 +44,7 @@ const [isInstructor] = useInstructor();
                 <NavLink to="/dashboard/addcourse"> Add a Course</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/mycourse">My Course</NavLink>
+                <NavLink to="/dashboard/mycourse">My Courses</NavLink>
               </li>
             </>
           ) : (

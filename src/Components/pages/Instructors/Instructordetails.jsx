@@ -1,7 +1,19 @@
-
 const Instructordetails = ({ item }) => {
   const {
-    _id, instructorImage, availableSeats, instructorEmail, studentNumber, courseImg, rating, description, courseName, price, duration, category,instructorName } = item;
+    _id,
+    instructorImage,
+    availableSeats,
+    email,
+    studentNumber,
+    courseImg,
+    rating,
+    description,
+    courseName,
+    price,
+    duration,
+    category,
+    instructorName,
+  } = item;
   return (
     <div className="flex flex-col gap-2 w-full group">
       <div
@@ -25,7 +37,7 @@ const Instructordetails = ({ item }) => {
         />
       </div>
       <div className="font-semibold text-lg">{instructorName}</div>
-      <div className="font-semibold text-lg">Email:{instructorEmail}</div>
+      <div className="font-semibold text-lg">Email:{email}</div>
       <div className="font-light text-2xl text-neutral-800">
         Coursename: {courseName}
       </div>
@@ -34,7 +46,6 @@ const Instructordetails = ({ item }) => {
       </div>
       <div className="flex flex-row items-center gap-3">
         <div className="font-semibold">Price: {price}$</div>
-      
       </div>
     </div>
   );

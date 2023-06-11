@@ -1,55 +1,35 @@
-import  { useState, useEffect } from "react";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { toast } from "react-hot-toast";
+import useCourses from "../../../../../hooks/useCourses";
+import { useState } from "react";
 
 const ManageClass = () => {
-  // const [axiosSecure] = useAxiosSecure();
-  const { data: courses = [], refetch } = useQuery(["courses"], async () => {
-    const res = await fetch("http://localhost:5000/courses");
-    // const res = await axiosSecure.get('/users')
-    return res.json();
-    // return res.data;
-  });
+  const [courses, , refetch] = useCourses();
+  const [disabledButtons, setDisabledButtons] = useState([]);
 
-  const handleApprove = async (course) => {
-     console.log(course._id)
-    fetch(`http://localhost:5000/students/admin/${course._id}`, {
+  const handleApprove = (id) => {
+    console.log("approved");
+    fetch(`http://localhost:5000/courses/${id}`, {
       method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "Approve" }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount) {
+        if (data.modifiedCount > 0) {
           refetch();
-         toast.success('course approved')
         }
       });
-    }
-
-  const handleDeny = async (id) => {
-    try {
-      await axios.patch(`/courses/${id}/status`, { status: "denied" }); // Replace with your backend API endpoint
-      updateClassStatus(id, "denied");
-    } catch (error) {
-      console.log("Error updating class status:", error);
-    }
   };
 
-  const updateClassStatus = (id, status) => {
-    setClasses((prevClasses) =>
-      prevClasses.map((cls) => {
-        if (cls._id === id) {
-          return { ...cls, status };
-        }
-        return cls;
-      })
-    );
+  const handleDisable = (index) => {
+    setDisabledButtons([...disabledButtons, index]);
   };
 
   return (
     <div className="w-full">
-      <p>Manage Courses</p>
+      <h3 className="text-3xl text-center font-semibold my-4">Manage Class</h3>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -60,41 +40,48 @@ const ManageClass = () => {
               <th>Instructor email</th>
               <th>Available seats</th>
               <th>Price</th>
-              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {classes.map((cls) => (
-              <tr key={cls._id}>
-                <td>
-                  <img className="h-28 w-28" src={cls.courseImg} />
-                </td>
-                <td>{cls.courseName}</td>
-                <td>{cls.instructorName}</td>
-                <td>{cls.instructorEmail}</td>
-                <td>{cls.availableSeats}</td>
-                <td>{cls.price}$</td>
-                <td>{cls.status}</td>
-                <td>
-                  {cls.status === "pending" && (
-                    <>
+            {courses.map((course, index) => {
+              console.log(course.status); // Log the value of course.status here
+              return (
+                <tr key={course._id}>
+                  <td>
+                    <img
+                      className="h-28 w-28"
+                      src={course.courseImg}
+                      alt="Course"
+                    />
+                  </td>
+                  <td>{course.courseName}</td>
+                  <td>{course.instructorName}</td>
+                  <td>{course.email}</td>
+                  <td className="text-center">{course.availableSeats}</td>
+                  <td>{course.price}$</td>
+                  <td>
+                    {course.status === "Approved" ? (
+                      <span>Approved</span>
+                    ) : (
                       <button
-                        disabled={cls.status !== "pending"}
-                        onClick={() => handleApprove(cls._id)}
+                        className="btn bg-green-400"
+                        onClick={() => handleApprove(course._id)}
                       >
                         Approve
                       </button>
-                      <button
-                        disabled={cls.status !== "pending"}
-                        onClick={() => handleDeny(cls._id)}
-                      >
-                        Deny
-                      </button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
+                    )}
+                    <button
+                      className="btn bg-red-400 mt-4"
+                      disabled={disabledButtons.includes(index)}
+                      onClick={() => handleDisable(index)}
+                    >
+                      Disable
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

@@ -7,9 +7,7 @@ import Image from "./Imgae";
 const MenuDropdown = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
-  //   const toggleOpen = useCallback(() => {
-  //     setIsOpen(value => !value)
-  //   }, [])
+ 
   return (
     <div className="relative">
       <div
