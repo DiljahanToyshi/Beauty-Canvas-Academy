@@ -1,8 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { toast } from "react-hot-toast";
-import { newCourse } from "../../../../api/course";
 import UpdateCourseForm from "./UpdateCourseForm";
+import { updateCourse } from "../../../../api/course";
 const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
   const [loading, setLoading] = useState(false);
 
@@ -38,7 +38,7 @@ const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
     const updatedData = Object.assign({}, { ...courseData });
     delete updatedData._id;
     setLoading(true);
-    newCourse(updatedData, id)
+    updateCourse(updatedData, id)
       .then((data) => {
         console.log(data);
         toast.success("Course info updated");

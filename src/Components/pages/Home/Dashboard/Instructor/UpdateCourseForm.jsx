@@ -116,7 +116,6 @@ closeModal,
               availableSeats
             </label>
             <input
-              value={courseData?.availableSeats}
               onChange={(event) =>
                 setcourseData({
                   ...courseData,
