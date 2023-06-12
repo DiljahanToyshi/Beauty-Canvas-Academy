@@ -15,12 +15,18 @@ const SelectedCourse = () => {
   };
     const total = cart.reduce((sum, course) => course.price + sum, 0);
 
-  const [bookingInfo, setBookingInfo] = useState({
-    name: user.displayName, email: user.email ,
-    price: total,
-    Id:cart._id,
+  const [course, setcourse] = useState({
+
   });
 
+  const handleCOurse = (course) =>{
+     setcourse({
+       ...course,
+       name: user.displayName,
+       email: user.email,
+     
+     }); 
+  }
   const handleDelete = (course) => {
       console.log(course);
     Swal.fire({
@@ -72,6 +78,10 @@ const SelectedCourse = () => {
               </tr>
             </thead>
             <tbody>
+              <PayModal course={course}
+                isOpen={isOpen}
+                closeModal={closeModal}
+              />
               {cart.map((course, index) => (
                 <tr key={course._id}>
                   <td>{index + 1}</td>
@@ -90,7 +100,7 @@ const SelectedCourse = () => {
                   <td>
                     <div>
                       <button
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => { setIsOpen(true); handleCOurse(course)}} 
                         className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50"
                       >
                         Pay
@@ -110,11 +120,6 @@ const SelectedCourse = () => {
               ))}
             </tbody>
           </table>
-          <PayModal
-            bookingInfo={bookingInfo}
-            isOpen={isOpen}
-            closeModal={closeModal}
-          />
         </div>
       </div>
     </>

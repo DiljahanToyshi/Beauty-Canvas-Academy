@@ -7,15 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 
 const MyCourse = () => {
     const [axiosSecure] = useAxiosSecure();
-
   const { user,loading } = useContext(AuthContext);
-    let [isOpen, setIsOpen] = useState(false);
-    function openModal() {
-      setIsOpen(true);
-    }
-    function closeModal() {
-      setIsOpen(false);
-    }
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const { refetch, data: courses = [] } = useQuery({
     queryKey: ["courses", user?.email],
@@ -53,6 +49,13 @@ const MyCourse = () => {
             <tbody>
               {courses.map((course, index) => (
                 <tr key={course._id}>
+                  <UpdateModal
+                    isOpen={isOpen}
+                    closeModal={closeModal}
+                    course={course}
+                    id={course._id}
+                    refetch={refetch}
+                  />
                   <td>{index + 1}</td>
                   <td>
                     <div className="avatar">
@@ -69,27 +72,16 @@ const MyCourse = () => {
                   <td>{course.CourseName}</td>
                   <td>${course.price}</td>
                   <td>{course.studentNumber}</td>
-                  <td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <span
-                        onClick={() => setIsEditModalOpen(true)}
-                        className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+
+                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                    <div>
+                      <button
+                        onClick={() => setIsOpen(true)}
+                        className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50"
                       >
-                        <span
-                          aria-hidden="true"
-                          className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                        ></span>
-                        <span className="relative">Update</span>
-                      </span>
-                      <UpdateModal
-                        isOpen={isEditModalOpen}
-                        closeModal={() => setIsEditModalOpen(false)}
-                        course={course}
-                        id={course._id}
-                        refetch={refetch}
-                        setIsEditModalOpen={setIsEditModalOpen}
-                      />
-                    </td>
+                        Update
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

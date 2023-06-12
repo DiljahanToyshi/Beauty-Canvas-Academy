@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useCart from "../../../../hooks/useCart";
 
 const CoursesCard = ({ course }) => {
-  const {role} = useContext(AuthContext);
+  const {user,role} = useContext(AuthContext);
 
   const {
     _id,
@@ -129,16 +129,24 @@ const CoursesCard = ({ course }) => {
         <div className="font-semibold">
           <span className="font-bold">Price:</span> {price}$
         </div>
-        
-          
-         {role == "Student" && <button
-            onClick={() => handleAddToCart(course)} 
-            className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50" disabled={false}
+
+        {role == "Student" ? (
+          <button
+            onClick={() => handleAddToCart(course)}
+            className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50"
+            disabled={false}
           >
             Book Now
-          </button>}
-       
-        
+          </button>
+        ) : (
+          <button
+            onClick={() => handleAddToCart(course)}
+            className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50"
+            disabled={true}
+          >
+            Book Now
+          </button>
+        )}
       </div>
     </div>
   );

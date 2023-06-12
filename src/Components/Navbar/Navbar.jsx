@@ -11,7 +11,7 @@ const Navbar = () => {
   const {user} = useContext(AuthContext);
  
   return (
-    <div className="fixed w-full bg-slate-700 text-white z-10 shadow-sm">
+    <div className=" w-full bg-slate-700 text-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">
         <Container>
           <div className="flex flex-row  items-center justify-between gap-2 md:gap-0">

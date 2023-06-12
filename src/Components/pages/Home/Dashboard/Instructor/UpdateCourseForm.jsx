@@ -3,7 +3,7 @@ import { TbFidgetSpinner } from 'react-icons/tb';
 
 const UpdateCourseForm = ({
   handleSubmit,
-
+closeModal,
   loading,
   handleImageUpdate,
   courseData,
@@ -18,7 +18,7 @@ const UpdateCourseForm = ({
               Course Name
             </label>
             <input
-              className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+              className="w-full px-4 py-3 text-gray-800 border border-slate-300 focus:outline-slate-500 rounded-md "
               name="CourseName"
               value={courseData?.CourseName}
               onChange={(event) =>
@@ -42,7 +42,7 @@ const UpdateCourseForm = ({
                   studentNumber: event.target.value,
                 })
               }
-              className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+              className="w-full px-4 py-3 text-gray-800 border border-slate-300 focus:outline-slate-500 rounded-md "
               name="studentNumber"
               id="studentNumber"
               type="text"
@@ -66,7 +66,7 @@ const UpdateCourseForm = ({
                     accept="image/*"
                     hidden
                   />
-                  <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
+                  <div className="bg-slate-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-slate-500">
                     Upload Image
                   </div>
                 </label>
@@ -83,7 +83,7 @@ const UpdateCourseForm = ({
                 onChange={(event) =>
                   setcourseData({ ...courseData, price: event.target.value })
                 }
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                className="w-full px-4 py-3 text-gray-800 border border-slate-300 focus:outline-slate-500 rounded-md "
                 name="price"
                 id="price"
                 type="number"
@@ -101,7 +101,7 @@ const UpdateCourseForm = ({
                 onChange={(event) =>
                   setcourseData({ ...courseData, duration: event.target.value })
                 }
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                className="w-full px-4 py-3 text-gray-800 border border-slate-300 focus:outline-slate-500 rounded-md "
                 name="duration"
                 id="duration"
                 type="number"
@@ -111,49 +111,49 @@ const UpdateCourseForm = ({
             </div>
           </div>
 
-            <div className="space-y-1 text-sm">
-              <label htmlFor="bedrooms" className="block text-gray-600">
-                availableSeats
-              </label>
-              <input
-                value={courseData?.availableSeats}
-                onChange={(event) =>
-                  setcourseData({
-                    ...courseData,
-                    availableSeats: event.target.value,
-                  })
-                }
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                name="availableSeats"
-                id="availableSeats"
-                type="number"
-                placeholder="Available Seats"
-                required
-              />
-            </div>
+          <div className="space-y-1 text-sm">
+            <label htmlFor="bedrooms" className="block text-gray-600">
+              availableSeats
+            </label>
+            <input
+              value={courseData?.availableSeats}
+              onChange={(event) =>
+                setcourseData({
+                  ...courseData,
+                  availableSeats: event.target.value,
+                })
+              }
+              className="w-full px-4 py-3 text-gray-800 border border-slate-300 focus:outline-slate-500 rounded-md "
+              name="availableSeats"
+              id="availableSeats"
+              type="number"
+              placeholder="Available Seats"
+              required
+            />
+          </div>
 
-            <div className="space-y-1 text-sm">
-              <label htmlFor="description" className="block text-gray-600">
-                Description
-              </label>
+          <div className="space-y-1 text-sm">
+            <label htmlFor="description" className="block text-gray-600">
+              Description
+            </label>
 
-              <textarea
-                value={courseData?.description}
-                onChange={(event) =>
-                  setcourseData({
-                    ...courseData,
-                    description: event.target.value,
-                  })
-                }
-                id="description"
-                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
-                name="description"
-              ></textarea>
-            </div>
+            <textarea
+              value={courseData?.description}
+              onChange={(event) =>
+                setcourseData({
+                  ...courseData,
+                  description: event.target.value,
+                })
+              }
+              id="description"
+              className="block rounded-md focus:slate-300 w-full h-32 px-4 py-3 text-gray-800  border border-slate-300 focus:outline-slate-500 "
+              name="description"
+            ></textarea>
+          </div>
         </div>
         <button
           type="submit"
-          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
+          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-slate-500"
         >
           {loading ? (
             <TbFidgetSpinner className="m-auto animate-spin" size={24} />
@@ -162,6 +162,15 @@ const UpdateCourseForm = ({
           )}
         </button>
       </form>
+      <div className="mt-2 ">
+        <button
+          onClick={closeModal}
+          type="button"
+          className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };

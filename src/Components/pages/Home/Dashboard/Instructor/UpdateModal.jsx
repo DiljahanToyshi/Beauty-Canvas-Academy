@@ -1,40 +1,38 @@
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
-import { toast } from 'react-hot-toast';
-import { newCourse } from '../../../../api/course';
-import UpdateCourseForm from './UpdateCourseForm';
-const UpdateModal = ({ setIsEditModalOpen, isOpen, refetch, course, id }) => {
-    
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { toast } from "react-hot-toast";
+import { newCourse } from "../../../../api/course";
+import UpdateCourseForm from "./UpdateCourseForm";
+const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
   const [loading, setLoading] = useState(false);
 
   const [courseData, setcourseData] = useState(course);
 
   const handleImageUpdate = (image) => {
     setLoading(true);
-    const imageUpload = async image => {
-  const formData = new FormData()
-  formData.append('image', image)
-  const url = `https://api.imgbb.com/1/upload?key=${
-   import.meta.env.VITE_Image_Upload_token
-  }`
-  const response = await fetch(url, {
-    method: "POST",
-    body: formData,
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      setcourseData({ ...courseData, image: res.data.display_url });
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.log(err);
-      setLoading(false);
-    });
+    const imageUpload = async (image) => {
+      const formData = new FormData();
+      formData.append("image", image);
+      const url = `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_Image_Upload_token
+      }`;
+      const res = await fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          setcourseData({ ...courseData, image: res.data.display_url });
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    };
   };
-}
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
     console.log(courseData);
     const updatedData = Object.assign({}, { ...courseData });
@@ -46,7 +44,6 @@ const UpdateModal = ({ setIsEditModalOpen, isOpen, refetch, course, id }) => {
         toast.success("Course info updated");
         setLoading(false);
         refetch();
-        setIsEditModalOpen(false)
       })
       .catch((err) => {
         console.log(err);
@@ -56,11 +53,7 @@ const UpdateModal = ({ setIsEditModalOpen, isOpen, refetch, course, id }) => {
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => setIsEditModalOpen(false)}
-      >
+      <Dialog as="div" className="relative z-10" onClose={()=>closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -89,7 +82,7 @@ const UpdateModal = ({ setIsEditModalOpen, isOpen, refetch, course, id }) => {
                   as="h3"
                   className="text-lg font-medium text-center leading-6 text-gray-900"
                 >
-                  Update Room Info
+                  Update Your Course
                 </Dialog.Title>
                 <div className="mt-2 w-full">
                   <UpdateCourseForm
@@ -98,26 +91,17 @@ const UpdateModal = ({ setIsEditModalOpen, isOpen, refetch, course, id }) => {
                     setcourseData={setcourseData}
                     handleImageUpdate={handleImageUpdate}
                     loading={loading}
-                  /> 
+                    closeModal={closeModal}
+                  />
                 </div>
                 <hr className="mt-8 " />
-                <div className="mt-2 ">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                    onClick={() => setIsEditModalOpen(false)}
-                  >
-                    Cancel
-                  </button>
-                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
         </div>
-      
       </Dialog>
     </Transition>
   );
 };
 
-export default UpdateModal
+export default UpdateModal;

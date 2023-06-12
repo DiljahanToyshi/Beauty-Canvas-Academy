@@ -21,20 +21,3 @@ const useCart = () => {
 
 export default useCart;
  
-// update course status
-
-// export const updateStatus = async(id,status) =>{
-//   const res = await fetch (
-//     `http://localhost:5000/carts/status/${id}`,
-//   {
-//     method: 'PATCH',
-//     headers:{
-//       'content-type':'application/json',
-//     },
-//     body:JSON.stringify({status}),
-//   }
-//   )
-
-// const data = await res.json();
-// return data
-// }

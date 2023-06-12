@@ -8,7 +8,7 @@ import { ImSpinner9 } from 'react-icons/im'
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure'
 import { updateStatus } from '../../../../api/course'
 import { AuthContext } from '../../../../providers/AuthProvider'
-const CheckoutForm = ({ bookingInfo, closeModal }) => {
+const CheckoutForm = ({ course, closeModal}) => {
   const navigate = useNavigate()
   const stripe = useStripe()
   const elements = useElements()
@@ -18,17 +18,16 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
   const [clientSecret, setClientSecret] = useState('')
   const [processing, setProcessing] = useState(false)
 
-  //   1.  get clientSecret from backend
   useEffect(() => {
-    if (bookingInfo.price > 0) {
+    if (course?.price > 0) {
       axiosSecure
-        .post('/create-payment-intent', { price: bookingInfo.price })
+        .post('/create-payment-intent', { price: course?.price })
         .then(res => {
-          console.log(res.data.clientSecret)
+          console.log(res.data.clientSecret,course)
           setClientSecret(res.data.clientSecret)
         })
     }
-  }, [bookingInfo, axiosSecure])
+  }, [course, axiosSecure])
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -78,20 +77,20 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
     if (paymentIntent.status === 'succeeded') {
       // save payment information to the server
       const paymentInfo = {
-        ...bookingInfo,
+        ...course,
         transactionId: paymentIntent.id,
         date: new Date(),
       }
-      axiosSecure.post('/bookings', paymentInfo).then(res => {
+      axiosSecure.post('/carts', paymentInfo).then(res => {
         console.log(res.data)
         if (res.data.insertedId) {
-          updateStatus(bookingInfo.Id, true)
+          updateStatus(course._id, true)
             .then(data => {
               setProcessing(false)
               console.log(data)
               const text = `Booking Successful!, TransactionId: ${paymentIntent.id}`
               toast.success(text)
-              navigate('/dashboard/my-bookings')
+              navigate("/dashboard/selectcourse");
               closeModal()
             })
             .catch(err => console.log(err))
@@ -135,7 +134,7 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
             {processing ? (
               <ImSpinner9 className='m-auto animate-spin' size={24} />
             ) : (
-              `Pay ${bookingInfo.price}$`
+              `Pay ${course.price}$`
             )}
           </button>
         </div>
