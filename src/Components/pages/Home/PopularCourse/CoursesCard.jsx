@@ -1,10 +1,12 @@
-import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useCart from "../../../../hooks/useCart";
 
 const CoursesCard = ({ course }) => {
+  const {role} = useContext(AuthContext);
+
   const {
     _id,
     courseImg,
@@ -18,24 +20,20 @@ const CoursesCard = ({ course }) => {
     description,
     rating
   } = course;
-  const { user } = useContext(AuthContext);
   const [,refetch] = useCart();
   const navigate = useNavigate();
   const location = useLocation();
-
   const handleAddToCart = (course) => {
     
     if (user && user.email) {
-      const currentSeats = availableSeats - 1;
-      const NewstudentNumber = studentNumber + 1;
       
       const course = {
         courseId: _id,
         courseName,
         email: user.email,
         instructorName,
-        AvailableSeats: currentSeats,
-        StudentNumber: NewstudentNumber,
+        availableSeats,
+        studentNumber,
         price,
         category,
         duration,
@@ -52,8 +50,9 @@ const CoursesCard = ({ course }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.insertedId) {
+          if (data.insertedId > 0) {
             refetch(); 
+            
             //  refetch cart to update the number of items in the cart
             Swal.fire({
               position: "top-end",
@@ -130,14 +129,16 @@ const CoursesCard = ({ course }) => {
         <div className="font-semibold">
           <span className="font-bold">Price:</span> {price}$
         </div>
-        <Link>
-          <button
-            onClick={() => handleAddToCart(course)}
-            className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50"
+        
+          
+         {role == "Student" && <button
+            onClick={() => handleAddToCart(course)} 
+            className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50" disabled={false}
           >
             Book Now
-          </button>
-        </Link>
+          </button>}
+       
+        
       </div>
     </div>
   );

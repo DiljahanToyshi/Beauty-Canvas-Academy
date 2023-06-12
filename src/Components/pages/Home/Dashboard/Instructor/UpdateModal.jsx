@@ -1,9 +1,9 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
-import { toast } from 'react-hot-toast'
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { newCourse } from '../../../../api/course';
 import UpdateCourseForm from './UpdateCourseForm';
-const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
+const UpdateModal = ({ setIsEditModalOpen, isOpen, refetch, course, id }) => {
     
   const [loading, setLoading] = useState(false);
 
@@ -46,7 +46,7 @@ const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
         toast.success("Course info updated");
         setLoading(false);
         refetch();
-        closeModal(false);
+        setIsEditModalOpen(false)
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +59,7 @@ const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
       <Dialog
         as="div"
         className="relative z-10"
-        onClose={() => closeModal(false)}
+        onClose={() => setIsEditModalOpen(false)}
       >
         <Transition.Child
           as={Fragment}
@@ -105,7 +105,7 @@ const UpdateModal = ({ closeModal, isOpen, refetch, course, id }) => {
                   <button
                     type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-                    onClick={() => closeModal(false)}
+                    onClick={() => setIsEditModalOpen(false)}
                   >
                     Cancel
                   </button>
