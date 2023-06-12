@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway);
-const PayModal = ({ closeModal, isOpen, course}) => {
+const PayModal = ({ closeModal, isOpen, course,cart}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -54,6 +54,8 @@ const PayModal = ({ closeModal, isOpen, course}) => {
                   <CheckoutForm
                     closeModal={closeModal}
                     course={course}
+                                    cart={cart}
+
                   ></CheckoutForm>
                 </Elements>
               </Dialog.Panel>

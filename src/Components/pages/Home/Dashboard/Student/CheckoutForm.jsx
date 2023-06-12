@@ -8,8 +8,7 @@ import { ImSpinner9 } from 'react-icons/im'
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure'
 import { updateStatus } from '../../../../api/course'
 import { AuthContext } from '../../../../providers/AuthProvider'
-const CheckoutForm = ({ course, closeModal}) => {
-  const navigate = useNavigate()
+const CheckoutForm = ({ course, closeModal,cart}) => {
   const stripe = useStripe()
   const elements = useElements()
   const { user } = useContext(AuthContext)
@@ -17,17 +16,17 @@ const CheckoutForm = ({ course, closeModal}) => {
   const [cardError, setCardError] = useState('')
   const [clientSecret, setClientSecret] = useState('')
   const [processing, setProcessing] = useState(false)
-
+    const [transactionId, setTransactionId] = useState('');
+const navigate = useNavigate();
   useEffect(() => {
     if (course?.price > 0) {
       axiosSecure
         .post('/create-payment-intent', { price: course?.price })
         .then(res => {
-          console.log(res.data.clientSecret,course)
           setClientSecret(res.data.clientSecret)
         })
     }
-  }, [course, axiosSecure])
+  }, [course?.price, axiosSecure])
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -41,7 +40,7 @@ const CheckoutForm = ({ course, closeModal}) => {
       return
     }
 
-    const { error } = await stripe.createPaymentMethod({
+    const { error,paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card,
     })
@@ -51,7 +50,7 @@ const CheckoutForm = ({ course, closeModal}) => {
       setCardError(error.message)
     } else {
       setCardError('')
-      // console.log('payment method', paymentMethod)
+    //  console.log('payment method', paymentMethod)
     }
 
     setProcessing(true)
@@ -73,30 +72,33 @@ const CheckoutForm = ({ course, closeModal}) => {
     }
 
     console.log('payment intent', paymentIntent)
+        setProcessing(false)
+        if (paymentIntent.status === 'succeeded') {
+            setTransactionId(paymentIntent.id);
+            // save payment information to the server
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price:course.price,
+                name:user?.displayName,
+                date: new Date(),
+                BookedId:course._id,
+                                bookedItems:  course.courseId,
+                                AvailableSeats: course.AvailableSeats,StudentNumber: course.StudentNumber,
 
-    if (paymentIntent.status === 'succeeded') {
-      // save payment information to the server
-      const paymentInfo = {
-        ...course,
-        transactionId: paymentIntent.id,
-        date: new Date(),
-      }
-      axiosSecure.post('/carts', paymentInfo).then(res => {
-        console.log(res.data)
-        if (res.data.insertedId) {
-          updateStatus(course._id, true)
-            .then(data => {
-              setProcessing(false)
-              console.log(data)
-              const text = `Booking Successful!, TransactionId: ${paymentIntent.id}`
-              toast.success(text)
-              navigate("/dashboard/selectcourse");
-              closeModal()
-            })
-            .catch(err => console.log(err))
+                courseName: course.courseName,
+                status: 'service pending'
+            }
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertResult) {
+                    toast.success("Payment SuccesFUl")  
+                                  navigate('/dashboard/enrolledclasses')
+  // display confirm
+                    }
+                })
         }
-      })
-    }
   }
 
   return (
@@ -140,6 +142,8 @@ const CheckoutForm = ({ course, closeModal}) => {
         </div>
       </form>
       {cardError && <p className='text-red-600 ml-8'>{cardError}</p>}
+                  {transactionId && <p className="text-green-500">Transaction complete </p>}
+
     </>
   )
 }

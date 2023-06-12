@@ -57,7 +57,7 @@ const ManageUsers = () => {
   return (
     <div className="w-full">
       <h3 className="text-3xl text-center font-semibold my-4">
-Manage Student      </h3>
+    Manage Student      </h3>
       <h3 className="text-exl text-center font-semibold my-4">
         Total Students: {students.length}
       </h3>

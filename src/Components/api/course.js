@@ -14,7 +14,7 @@ export const newCourse = async (courseData, id) => {
 
 export const updateStatus = async (id, status) => {
   const response = await fetch(
-    `http://localhost:5000/carts/status/${id}`,
+    `http://localhost:5000/courses/status/${id}`,
     {
       method: 'PATCH',
       headers: {
@@ -26,3 +26,4 @@ export const updateStatus = async (id, status) => {
   const data = await response.json()
   return data
 }
+

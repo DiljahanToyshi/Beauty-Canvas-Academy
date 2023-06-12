@@ -28,7 +28,6 @@ const SelectedCourse = () => {
      }); 
   }
   const handleDelete = (course) => {
-      console.log(course);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -81,6 +80,8 @@ const SelectedCourse = () => {
               <PayModal course={course}
                 isOpen={isOpen}
                 closeModal={closeModal}
+                refetch={refetch}
+                cart={cart}
               />
               {cart.map((course, index) => (
                 <tr key={course._id}>
