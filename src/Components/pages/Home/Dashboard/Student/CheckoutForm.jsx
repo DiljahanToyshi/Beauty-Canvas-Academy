@@ -2,12 +2,12 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import './CheckoutForm.css'
-import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { ImSpinner9 } from 'react-icons/im'
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure'
 import { updateStatus } from '../../../../api/course'
 import { AuthContext } from '../../../../providers/AuthProvider'
+import { toast } from 'react-hot-toast'
 const CheckoutForm = ({ course, closeModal,cart}) => {
   const stripe = useStripe()
   const elements = useElements()
@@ -86,7 +86,7 @@ const navigate = useNavigate();
                                 bookedItems:  course.courseId,
                                 AvailableSeats: course.AvailableSeats,StudentNumber: course.StudentNumber,
 
-                courseName: course.courseName,
+                courseName: course?.courseName,
                 status: 'service pending'
             }
             axiosSecure.post('/payments', payment)

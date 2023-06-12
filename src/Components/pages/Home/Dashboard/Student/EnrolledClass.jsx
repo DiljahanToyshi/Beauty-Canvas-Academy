@@ -1,65 +1,57 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 
 const EnrolledClass = () => {
       const { user } = useContext(AuthContext);
     const [courses, setcourses] = useState([]);
-    const navigate = useNavigate();
 
     const url = `http://localhost:5000/payments/${user?.email}`;
     useEffect(() => {
-        fetch(url, {
-            method: 'GET', 
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('car-access-token')}`
-            }
-        })
+        fetch(url)
             .then(res => res.json())
             .then(data => {
-                if(!data.error){
+                    console.log(data)
                     setcourses(data)
-                }
-                else{
-                    // logout and then navigate
-                    navigate('/');
-                }
-            })
-    }, [url, navigate]);
+                
+               
+            }
+            )
+    }, []);
 
 
     return (
-        <div>
-            <h2 className="text-5xl">Your courses: {courses.length}</h2>
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
-                            <th>Image</th>
-                            <th>Service</th>
-                            <th>Date</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            courses.map(booking => <BookingRow
-                                key={booking._id}
-                                booking={booking}
-                                handleDelete={handleDelete}
-                                handleBookingConfirm={handleBookingConfirm}
-                            ></BookingRow>)
-                        }
-                    </tbody>
-
-                </table>
-            </div>
+      <div className="w-full">
+        <h3 className="text-3xl text-center font-semibold my-4">
+          Your Course{" "}
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="table table-zebra w-full">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((user, index) => (
+                <tr key={user._id}>
+                  <th>{index + 1}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.courseName}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+      </div>
     );
 };
 
