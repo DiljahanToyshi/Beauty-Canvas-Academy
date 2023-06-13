@@ -1,19 +1,17 @@
 
-import  { useContext,  useState } from "react";
+import  { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
-import UpdateModal from "./UpdateModal";
 import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+
+import CourseForm from "./CourseForm";
 
 const MyCourse = () => {
     const [axiosSecure] = useAxiosSecure();
   const { user,loading } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+ 
 
-  const { refetch, data: courses = [] } = useQuery({
+  const { data: courses = [] } = useQuery({
     queryKey: ["courses", user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -47,43 +45,12 @@ const MyCourse = () => {
               </tr>
             </thead>
             <tbody>
-              {courses.map((course, index) => (
-                <tr key={course._id}>
-                  <UpdateModal
-                    isOpen={isOpen}
-                    closeModal={closeModal}
-                    course={course}
-                    id={course._id}
-                    refetch={refetch}
-                  />
-                  <td>{index + 1}</td>
-                  <td>
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
-                        {course.courseImg && (
-                          <img
-                            src={course.courseImg}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  </td>
-                  <td>{course.CourseName}</td>
-                  <td>${course.price}</td>
-                  <td>{course.studentNumber}</td>
-
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div>
-                      <button
-                        onClick={() => setIsOpen(true)}
-                        className="btn btn-neutral text-white rounded-full  hover:bg-slate-500 outline-slate-50"
-                      >
-                        Update
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+              {courses.map((course,index) => (
+                <CourseForm
+                  key={course._id}
+                  index={index}
+                  course={course}
+                ></CourseForm>
               ))}
             </tbody>
           </table>

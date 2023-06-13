@@ -12,7 +12,7 @@ const Classes = () => {
 
   return (
     <Container>
-      <div className=" my-24">
+      <div className=" my-8">
         <p className="text-5xl font-semibold text-center ">
           Our Popular <br /> Course Program 
         </p>

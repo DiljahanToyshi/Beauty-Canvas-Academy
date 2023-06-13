@@ -17,6 +17,7 @@ import MyCourse from "../pages/Home/Dashboard/Instructor/MyCourse";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AdmineROute from "./AdmineROute";
 import InstructorRoute from "./InstructorRoute";
+import UpdateCourseForm from "../pages/Home/Dashboard/Instructor/UpdateCourseForm";
 
 export const router = createBrowserRouter([
   {
@@ -101,13 +102,12 @@ export const router = createBrowserRouter([
           </InstructorRoute>
         ),
       },
+      {
+        path: "updatecourse/:id",
+        element: <UpdateCourseForm />,
+      },
+
+      // {path:"/update-course/:courseId", element:<UpdateCourseForm /> }
     ],
   },
-
-  // {
-  //   path: "/dashboard/mycourse/:id",
-  //   element: <UpdateCourse></UpdateCourse>,
-  //   loader: (params) =>
-  //     fetch(`http://localhost:5000/courses/${params.id}`),
-  // },
 ]);

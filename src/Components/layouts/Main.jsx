@@ -40,7 +40,7 @@ else {
               )}
             </span>
           </div>
-          <div className="sm:pt-20 pt-28 pb-10 md:min-h-[calc(100vh-141px)]">
+          <div className=" pb-10 md:min-h-[calc(100vh-141px)]">
             <Outlet />
           </div>
           <Footer />
