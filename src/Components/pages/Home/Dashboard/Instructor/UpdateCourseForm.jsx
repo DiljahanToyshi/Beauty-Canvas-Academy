@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateCourseForm = () => {
     const {id} = useParams();
@@ -24,7 +25,18 @@ const onSubmit = (data) => {
         body: JSON.stringify(data),
       })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {console.log(data);
+          if (data.modifiedCount) {
+            reset();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Update successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+    });
       
   };
     return (

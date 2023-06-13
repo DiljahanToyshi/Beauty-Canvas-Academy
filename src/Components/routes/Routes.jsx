@@ -5,7 +5,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
-// import ErrorPage from "../pages/Error/ErrorPage";
+import ErrorPage from "../pages/Error/ErrorPage";
 import ManageUsers from "../pages/Home/Dashboard/Admin/ManageUsers";
 import ManageClass from "../pages/Home/Dashboard/Admin/ManageClass";
 import EnrolledClass from "../pages/Home/Dashboard/Student/EnrolledClass";
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    // errorElement:<ErrorPage></ErrorPage>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

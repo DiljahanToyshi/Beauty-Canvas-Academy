@@ -1,0 +1,5 @@
+.background-img{
+    background-image: url('../../../../../public/school.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -10,8 +10,8 @@ const[courses] = useCourses();
 
     return (
       <Container>
-        <div className=" my-24">
-          <p className="text-5xl font-semibold text-center ">
+        <div className=" mb-24 mt-56 ">
+          <p className="text-5xl font-semibold text-center my-8 ">
             Our Popular <br /> Course Program
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
