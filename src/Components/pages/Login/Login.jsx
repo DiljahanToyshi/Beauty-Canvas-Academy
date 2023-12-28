@@ -16,7 +16,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const emailRef = useRef();
-
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,7 +27,6 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     setError("");
     setSuccess("");
 
@@ -66,7 +64,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         if (!loggedUser.emailVerified) {
-        }
+       console.log("exit") }
         setSuccess("login successfully.");
         setError("");
       })
@@ -86,7 +84,8 @@ const Login = () => {
           <form onSubmit={handleLogin} className="card-body pb-0">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text text-slate-500 text-lg">
+                  Email</span>
               </label>
               <input
                 ref={emailRef}
@@ -99,12 +98,16 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+              <span className="label-text text-slate-500 text-lg">
+                  Password</span>
               </label>
-              <div className="flex">
+              <div className="flex gap-3 md:gap-6 items-center">
                 <div>
                   {" "}
                   <input
+                                    ref={emailRef}
+                                    className="input input-bordered"
+
                     type={show ? "text" : "password"}
                     name="password"
                     id=""
@@ -112,9 +115,8 @@ const Login = () => {
                     required
                   />
                 </div>
-                <div className="mt-1 ml-2">
+                <div className="">
                   <span onClick={() => setSHow(!show)}>
-                    <small>
                       {show ? (
                         <span>
                           <AiFillEye></AiFillEye>
@@ -125,7 +127,6 @@ const Login = () => {
                           <AiFillEyeInvisible></AiFillEyeInvisible>{" "}
                         </span>
                       )}
-                    </small>
                   </span>
                 </div>
               </div>
