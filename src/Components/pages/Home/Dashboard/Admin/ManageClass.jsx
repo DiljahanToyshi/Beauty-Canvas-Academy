@@ -7,7 +7,7 @@ const ManageClass = () => {
 
   const handleApprove = (id) => {
     console.log("approved");
-    fetch(`http://localhost:5000/courses/${id}`, {
+    fetch(`https://assignment-12-server-delta-six.vercel.app/courses/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

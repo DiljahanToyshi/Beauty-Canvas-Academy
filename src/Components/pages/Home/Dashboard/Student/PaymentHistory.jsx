@@ -7,7 +7,7 @@ const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
   const [courses, setcourses] = useState([]);
 
-  const url = `http://localhost:5000/payments/${user?.email}`;
+  const url = `https://assignment-12-server-delta-six.vercel.app/payments/${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

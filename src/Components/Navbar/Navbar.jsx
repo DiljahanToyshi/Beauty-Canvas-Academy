@@ -28,9 +28,15 @@ const Navbar = () => {
             <Link to="/classes" className="hidden md:block">
               Classes{" "}
             </Link>
-            <Link to="/dashboard/selectcourse" className="hidden md:block">
-              {user?.displayName} Dashboard{" "}
-            </Link>
+      
+{user?.displayName ? (
+  <Link to="/dashboard/selectcourse" className="hidden md:block">
+    {user?.displayName}'s Dashboard
+  </Link>
+) : (
+  <Link to="/dashboard" className="hidden md:block">
+    Dashboard
+  </Link>)}
             <MenuDropdown />
           </div>
         </Container>

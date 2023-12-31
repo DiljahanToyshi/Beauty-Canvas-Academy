@@ -1,5 +1,5 @@
 export const updateCourse  = async (courseData, id) => {
-    const response = await fetch(`http://localhost:5000/courses/${id}`, {
+    const response = await fetch(`https://assignment-12-server-delta-six.vercel.app/courses/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
@@ -14,7 +14,7 @@ export const updateCourse  = async (courseData, id) => {
 
 export const updateStatus = async (id, status) => {
   const response = await fetch(
-    `http://localhost:5000/courses/status/${id}`,
+    `https://assignment-12-server-delta-six.vercel.app/courses/status/${id}`,
     {
       method: 'PATCH',
       headers: {

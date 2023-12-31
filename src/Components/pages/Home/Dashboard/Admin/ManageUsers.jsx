@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
   const { data: students = [], refetch } = useQuery(["students"], async () => {
-    // const res = await fetch("http://localhost:5000/students");
+    // const res = await fetch("https://assignment-12-server-delta-six.vercel.app/students");
     const res = await axiosSecure.get('/students')
     // return res.json();
     return res.data;
@@ -13,7 +13,7 @@ const ManageUsers = () => {
 
   const handleMakeAdmin = (user) => {
     console.log(user._id)
-    fetch(`http://localhost:5000/students/admin/${user._id}`, {
+    fetch(`https://assignment-12-server-delta-six.vercel.app/students/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -33,7 +33,7 @@ const ManageUsers = () => {
   };
   const handleMakeInstructor = (user) => {
     console.log(user)
-    fetch(`http://localhost:5000/students/instructor/${user._id}`, {
+    fetch(`https://assignment-12-server-delta-six.vercel.app/students/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

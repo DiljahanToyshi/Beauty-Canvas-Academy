@@ -26,7 +26,7 @@ const SignUp = () => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           const saveUser = { name: data.name, email: data.email };
-          fetch("http://localhost:5000/students", {
+          fetch("https://assignment-12-server-delta-six.vercel.app/students", {
             method: "POST",
             headers: {
               "content-type": "application/json",

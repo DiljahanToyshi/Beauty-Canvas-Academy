@@ -73,7 +73,7 @@ const AuthProvider = ({children}) => {
          // jwt token
          if (currentUser) {
            axios
-             .post("http://localhost:5000/jwt", { email: currentUser.email })
+             .post("https://assignment-12-server-delta-six.vercel.app/jwt", { email: currentUser.email })
              .then((data) => {
               // const dataObj = JSON.parse(data.config.data);
               // console.log(dataObj)

@@ -2,7 +2,7 @@ import { Slide } from "react-awesome-reveal";
 import "./section.css"
 const ExtraSection = () => {
   return (
-    <div className="  h-96 w-full bg-none   ">
+    <div className="  h-full w-full bg-none   ">
       <div className=" rounded-xl flex items-center h-full left-0 top-0 min-h-screen background-img ">
         <Slide direction="up">
           <div className="text-white space-y-7  w-2/5 pl-8">

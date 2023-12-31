@@ -11,14 +11,14 @@ const [course,setCourse] = useState({});
   const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-    fetch(`http://localhost:5000/singlecourse/${id}`)
+    fetch(`https://assignment-12-server-delta-six.vercel.app/singlecourse/${id}`)
       .then((res) => res.json())
       .then((data) => setCourse(data));
   }, [])
 
 
 const onSubmit = (data) => {
-    fetch(`http://localhost:5000/updatesinglecourse/${id}`,
+    fetch(`https://assignment-12-server-delta-six.vercel.app/updatesinglecourse/${id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

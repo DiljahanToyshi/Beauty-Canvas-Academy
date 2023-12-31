@@ -6,7 +6,7 @@ import useCart from "../../../../hooks/useCart";
 
 const CoursesCard = ({ course }) => {
   const {user,role} = useContext(AuthContext);
-
+console.log(role);
   const {
     _id,
     courseImg,
@@ -41,7 +41,7 @@ const CoursesCard = ({ course }) => {
       };
           
 
-      fetch("http://localhost:5000/carts", {
+      fetch("https://assignment-12-server-delta-six.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -80,7 +80,7 @@ const CoursesCard = ({ course }) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 w-full group">
+    <div className="flex flex-col gap-2 w-full group shadow-2xl bg-slate-300">
       <div
         className="
             aspect-square 
@@ -125,7 +125,7 @@ const CoursesCard = ({ course }) => {
         {duration}Month
       </div>
 
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center justify-between gap-3">
         <div className="font-semibold">
           <span className="font-bold">Price:</span> {price}$
         </div>

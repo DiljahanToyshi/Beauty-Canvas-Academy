@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 const useData = () => {
   // const [courseData, setCourseData] = useState([]);
   // useEffect(() => {
-  //   fetch("http://localhost:5000/coursedata")
+  //   fetch("https://assignment-12-server-delta-six.vercel.app/coursedata")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setCourseData(data);
@@ -18,7 +18,7 @@ const useData = () => {
   } = useQuery({
     queryKey: ["courseData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/courseData");
+      const res = await fetch("https://assignment-12-server-delta-six.vercel.app/courseData");
       return res.json();
     },
   });

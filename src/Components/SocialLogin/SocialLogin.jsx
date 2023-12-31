@@ -13,12 +13,11 @@ const SocialLogin = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle().then((result) => {
       const loggedInUser = result.user;
-      console.log(loggedInUser);
       const saveUser = {
-        name: loggedInUser.displayName,
-        email: loggedInUser.email,
+        name: loggedInUser?.displayName,
+        email: loggedInUser?.email,
       };
-      fetch("http://localhost:5000/students", {
+      fetch("https://assignment-12-server-delta-six.vercel.app/students", {
         method: "POST",
         headers: {
           "content-type": "application/json",
